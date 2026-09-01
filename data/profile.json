@@ -1,0 +1,49 @@
+{
+  "user_id": "usr_12345",
+  "first_name": "Alex",
+  "last_name": "Chen",
+  "email": "alex.chen@example.com",
+  "education": [
+    {
+      "degree": "B.S. Computer Science",
+      "institution": "Dr NGP INSTITUTE OF TECHNOLOGY",
+      "cgpa": 8.5,
+      "year": 2027
+    }
+  ],
+  "skills": [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Python",
+    "Machine Learning"
+  ],
+  "certifications": [
+    "AWS Certified Developer"
+  ],
+  "experience": [
+    {
+      "role": "Software Engineering Intern",
+      "org": "Startup Inc",
+      "duration": "Summer 2024",
+      "description": "Developed features using React and Node.js."
+    }
+  ],
+  "documents": {
+    "resume_url": "https://example.com/resume.pdf",
+    "transcript_url": "https://example.com/transcript.pdf"
+  },
+  "preferences": {
+    "opportunity_types": [
+      "internship",
+      "job"
+    ],
+    "locations": [
+      "Remote",
+      "New York",
+      "San Francisco"
+    ],
+    "min_stipend": 5000
+  }
+}

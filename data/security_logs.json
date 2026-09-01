@@ -1,0 +1,15 @@
+[
+  {
+    "id": "4964f931-3ac1-4c22-b2f7-1669b4e031c6",
+    "url": "https://forms.gle/qrWPx7v9h53sszte9",
+    "timestamp": "2026-08-26T03:28:51.201Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: Skipped (API Key missing)",
+      "VirusTotal: Skipped (API Key missing)",
+      "URL redirects to: https://docs.google.com/forms/d/e/1FAIpQLSdwCntvpqL3uPnzTFgHE3T8kHjp8MHu0a8TWRKsr3jUO3K5Dw/closedform",
+      "AI Analysis: Skipped (API Key missing)"
+    ]
+  }
+]
