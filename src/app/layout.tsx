@@ -3,6 +3,7 @@ import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 
 import { Providers } from "@/components/Providers";
+import ChatWidget from "@/components/ChatWidget";
 
 export const metadata: Metadata = {
   title: "OmniGuard Platform",
@@ -24,6 +25,7 @@ export default function RootLayout({
               {children}
             </main>
           </div>
+          <ChatWidget />
         </Providers>
       </body>
     </html>
