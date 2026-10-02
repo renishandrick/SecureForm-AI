@@ -1,5 +1,161 @@
 [
   {
+    "id": "d8613f77-50b1-4612-949f-41881ce9fa48",
+    "url": "https://example.com/mock-application",
+    "timestamp": "2026-10-02T15:36:46.004Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: Gemini Security Check failed"
+    ]
+  },
+  {
+    "id": "c41ab4e7-73e7-465a-99bb-a12502f43e61",
+    "url": "https://example.com/mock-application",
+    "timestamp": "2026-10-02T15:36:41.853Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: Gemini Security Check failed"
+    ]
+  },
+  {
+    "id": "23f3e356-0ed0-44ba-978c-09c4b19eff96",
+    "url": "https://example.com/mock-application",
+    "timestamp": "2026-10-02T15:36:38.964Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: Gemini Security Check failed"
+    ]
+  },
+  {
+    "id": "1140e2dc-f356-414a-846d-d68387532c0f",
+    "url": "https://example.com/mock-application",
+    "timestamp": "2026-10-02T15:36:34.076Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: Gemini Security Check failed"
+    ]
+  },
+  {
+    "id": "42bfe6ed-2cb7-44ad-a7e0-53810b666a61",
+    "url": "https://example.com/mock-application",
+    "timestamp": "2026-10-02T15:36:33.325Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: Gemini Security Check failed"
+    ]
+  },
+  {
+    "id": "6355348f-1ff1-473f-bfed-75dbef892884",
+    "url": "https://example.com/mock-application",
+    "timestamp": "2026-10-02T15:36:28.423Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: Gemini Security Check failed"
+    ]
+  },
+  {
+    "id": "6ad5cae9-0452-4319-8352-fc8c29457b14",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSdUap0DYvAAI2cmiI3ECa7_kfcoZvI118zvmr_xZoESwEt2UQ/viewform?usp=publish-editor",
+    "timestamp": "2026-10-02T14:12:19.283Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: Gemini Security Check failed"
+    ]
+  },
+  {
+    "id": "4a7e442f-d6f6-413a-93e3-c867323e8d52",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSdUap0DYvAAI2cmiI3ECa7_kfcoZvI118zvmr_xZoESwEt2UQ/viewform?usp=publish-editor",
+    "timestamp": "2026-10-02T14:11:32.300Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: No social engineering or excessive data collection detected."
+    ]
+  },
+  {
+    "id": "942b0d37-8f4a-48eb-bb5f-934c169f7744",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSdUap0DYvAAI2cmiI3ECa7_kfcoZvI118zvmr_xZoESwEt2UQ/viewform?usp=publish-editor",
+    "timestamp": "2026-10-02T14:10:39.463Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: No social engineering or excessive data collection detected."
+    ]
+  },
+  {
+    "id": "e60610f2-6e2a-4413-86ec-d5f6632eb4eb",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSdUap0DYvAAI2cmiI3ECa7_kfcoZvI118zvmr_xZoESwEt2UQ/viewform?usp=publish-editor",
+    "timestamp": "2026-10-02T14:10:27.104Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: Gemini Security Check failed"
+    ]
+  },
+  {
+    "id": "78cc1a8c-c146-40bd-be2d-34d52913af68",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSdUap0DYvAAI2cmiI3ECa7_kfcoZvI118zvmr_xZoESwEt2UQ/viewform?usp=publish-editor",
+    "timestamp": "2026-10-02T14:08:07.193Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: Gemini Security Check failed"
+    ]
+  },
+  {
+    "id": "d3de00c2-2c63-434a-a9ae-4f1a8f63fe0a",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSdUap0DYvAAI2cmiI3ECa7_kfcoZvI118zvmr_xZoESwEt2UQ/viewform?usp=publish-editor",
+    "timestamp": "2026-10-02T14:04:51.095Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: Gemini Security Check failed"
+    ]
+  },
+  {
+    "id": "035b43a7-26ab-4ec0-912f-ee87f49e0a94",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSdUap0DYvAAI2cmiI3ECa7_kfcoZvI118zvmr_xZoESwEt2UQ/viewform?usp=publish-editor",
+    "timestamp": "2026-10-02T13:50:38.442Z",
+    "classification": "safe",
+    "signals": [
+      "Uses HTTPS secure connection",
+      "Google Safe Browsing: No threats detected",
+      "VirusTotal: Analysis data unavailable",
+      "AI Analysis: Gemini Security Check failed"
+    ]
+  },
+  {
     "id": "4964f931-3ac1-4c22-b2f7-1669b4e031c6",
     "url": "https://forms.gle/qrWPx7v9h53sszte9",
     "timestamp": "2026-08-26T03:28:51.201Z",

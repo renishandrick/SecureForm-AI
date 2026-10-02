@@ -85,3 +85,20 @@ export async function saveSecurityLog(log: SecurityLog): Promise<void> {
   logs.unshift(log); // Add to beginning
   await fs.writeFile(SECURITY_LOGS_FILE, JSON.stringify(logs, null, 2), "utf-8");
 }
+
+// Email Opportunities
+const EMAIL_OPPS_FILE = path.join(DATA_DIR, "email_opportunities.json");
+
+export async function getEmailOpportunities(): Promise<any[]> {
+  try {
+    await fs.access(EMAIL_OPPS_FILE);
+  } catch {
+    await fs.writeFile(EMAIL_OPPS_FILE, "[]", "utf-8");
+  }
+  const data = await fs.readFile(EMAIL_OPPS_FILE, "utf-8");
+  return JSON.parse(data);
+}
+
+export async function saveEmailOpportunities(opps: any[]): Promise<void> {
+  await fs.writeFile(EMAIL_OPPS_FILE, JSON.stringify(opps, null, 2), "utf-8");
+}

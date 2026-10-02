@@ -47,22 +47,69 @@ export function checkEligibility(profile: UserProfile, opportunity: Opportunity)
 
 // Stage 5 - Auto-Fill Mapping (Mock implementation)
 export function generateFieldMappings(profile: UserProfile, opportunity: Opportunity): AutoFillResult {
-  const mappings: FieldMapping[] = [
-    { field_name: "first_name", value: profile.first_name || "", source: profile.first_name ? "profile" : "unmapped", confidence: profile.first_name ? 1.0 : 0.0 },
-    { field_name: "last_name", value: profile.last_name || "", source: profile.last_name ? "profile" : "unmapped", confidence: profile.last_name ? 1.0 : 0.0 },
-    { field_name: "email", value: profile.email || "", source: profile.email ? "profile" : "unmapped", confidence: profile.email ? 1.0 : 0.0 },
-    { field_name: "university", value: profile.education[0]?.institution || "", source: "profile", confidence: 1.0 },
-    { field_name: "cgpa", value: profile.education[0]?.cgpa.toString() || "", source: "profile", confidence: 1.0 },
-    { field_name: "resume_upload", value: profile.documents.resume_url, source: "profile", confidence: 1.0 }
-  ];
+  let mappings: FieldMapping[] = [];
 
-  if (opportunity.type === "internship") {
-    mappings.push({
-      field_name: "short_essay",
-      value: `I am highly interested in the ${opportunity.title} role at ${opportunity.org}. My background in ${profile.skills.join(", ")} makes me a strong fit.`,
-      source: "ai_generated",
-      confidence: 0.85
+  if (opportunity.questions && opportunity.questions.length > 0) {
+    mappings = opportunity.questions.map(q => {
+      let value = "";
+      let source: "profile" | "unmapped" | "ai_generated" = "unmapped";
+      let confidence = 0;
+      
+      const lowerQ = q.toLowerCase();
+      if (lowerQ.includes('first name')) {
+        value = profile.first_name || "";
+        source = profile.first_name ? "profile" : "unmapped";
+        confidence = profile.first_name ? 1.0 : 0.0;
+      } else if (lowerQ.includes('last name')) {
+        value = profile.last_name || "";
+        source = profile.last_name ? "profile" : "unmapped";
+        confidence = profile.last_name ? 1.0 : 0.0;
+      } else if (lowerQ.includes('name')) {
+        value = `${profile.first_name} ${profile.last_name}`.trim();
+        source = value ? "profile" : "unmapped";
+        confidence = value ? 1.0 : 0.0;
+      } else if (lowerQ.includes('email')) {
+        value = profile.email || "";
+        source = profile.email ? "profile" : "unmapped";
+        confidence = profile.email ? 1.0 : 0.0;
+      } else if (lowerQ.includes('university') || lowerQ.includes('institution') || lowerQ.includes('college')) {
+        value = profile.education[0]?.institution || "";
+        source = value ? "profile" : "unmapped";
+        confidence = value ? 1.0 : 0.0;
+      } else if (lowerQ.includes('cgpa') || lowerQ.includes('gpa')) {
+        value = profile.education[0]?.cgpa?.toString() || "";
+        source = value ? "profile" : "unmapped";
+        confidence = value ? 1.0 : 0.0;
+      } else if (lowerQ.includes('resume') || lowerQ.includes('cv') || lowerQ.includes('document') || lowerQ.includes('link')) {
+        value = profile.documents.resume_url || "";
+        source = value ? "profile" : "unmapped";
+        confidence = value ? 1.0 : 0.0;
+      } else if (lowerQ.includes('essay') || lowerQ.includes('why') || lowerQ.includes('cover letter')) {
+        value = `I am highly interested in the ${opportunity.title} role at ${opportunity.org}. My background in ${profile.skills.join(", ")} makes me a strong fit.`;
+        source = "ai_generated";
+        confidence = 0.85;
+      }
+      
+      return { field_name: q, value, source, confidence };
     });
+  } else {
+    mappings = [
+      { field_name: "first_name", value: profile.first_name || "", source: profile.first_name ? "profile" : "unmapped", confidence: profile.first_name ? 1.0 : 0.0 },
+      { field_name: "last_name", value: profile.last_name || "", source: profile.last_name ? "profile" : "unmapped", confidence: profile.last_name ? 1.0 : 0.0 },
+      { field_name: "email", value: profile.email || "", source: profile.email ? "profile" : "unmapped", confidence: profile.email ? 1.0 : 0.0 },
+      { field_name: "university", value: profile.education[0]?.institution || "", source: "profile", confidence: 1.0 },
+      { field_name: "cgpa", value: profile.education[0]?.cgpa?.toString() || "", source: "profile", confidence: 1.0 },
+      { field_name: "resume_upload", value: profile.documents.resume_url, source: "profile", confidence: 1.0 }
+    ];
+
+    if (opportunity.type === "internship") {
+      mappings.push({
+        field_name: "short_essay",
+        value: `I am highly interested in the ${opportunity.title} role at ${opportunity.org}. My background in ${profile.skills.join(", ")} makes me a strong fit.`,
+        source: "ai_generated",
+        confidence: 0.85
+      });
+    }
   }
 
   return {

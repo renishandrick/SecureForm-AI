@@ -83,10 +83,19 @@ async function checkGeminiSecurity(textContent: string, apiKey: string): Promise
       ${textContent.substring(0, 15000)}
     `;
     
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-    });
+    let response;
+    for (let i = 0; i < 3; i++) {
+      try {
+        response = await ai.models.generateContent({
+          model: 'gemini-3.8-flash',
+          contents: prompt,
+        });
+        break;
+      } catch (e: any) {
+        if (i === 2 || (!e.message?.includes('503') && e.status !== 'UNAVAILABLE')) throw e;
+        await new Promise(r => setTimeout(r, 1500 * (i + 1)));
+      }
+    }
     
     let aiText = response.text || '{"classification":"safe","signals":[]}';
     aiText = aiText.replace(/```json/g, "").replace(/```/g, "").trim();

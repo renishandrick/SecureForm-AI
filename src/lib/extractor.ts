@@ -27,23 +27,34 @@ export async function extractOpportunity(targetUrl: string): Promise<Opportunity
         - Type (must be exactly "internship", "scholarship", or "job")
         - Minimum CGPA requirement (number, use 0 if not specified)
         - Required Skills (array of strings, e.g., ["React", "Python"])
+        - Questions (array of strings, extract the exact questions/fields requested in the form, e.g., ["Full Name", "Email Address", "Resume Link", "Why do you want to join?"])
         
         Respond with ONLY a valid JSON object matching this structure:
         {
           "title": "...",
           "type": "...",
           "min_cgpa": 0.0,
-          "required_skills": ["..."]
+          "required_skills": ["..."],
+          "questions": ["...", "..."]
         }
         
         Text Content:
         ${textContent.substring(0, 10000)}
       `;
       
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: prompt,
-      });
+      let response;
+      for (let i = 0; i < 3; i++) {
+        try {
+          response = await ai.models.generateContent({
+            model: 'gemini-3.8-flash',
+            contents: prompt,
+          });
+          break;
+        } catch (e: any) {
+          if (i === 2 || (!e.message?.includes('503') && e.status !== 'UNAVAILABLE')) throw e;
+          await new Promise(r => setTimeout(r, 1500 * (i + 1)));
+        }
+      }
       
       let aiText = response.text || "{}";
       // Clean up markdown code block if present
@@ -60,6 +71,7 @@ export async function extractOpportunity(targetUrl: string): Promise<Opportunity
           required_skills: parsed.required_skills || [],
           eligibility_text: "Extracted from page content using Gemini AI."
         },
+        questions: parsed.questions || [],
         deadline: null, 
         apply_url: targetUrl,
         data_quality: "complete"
@@ -80,6 +92,12 @@ export async function extractOpportunity(targetUrl: string): Promise<Opportunity
   const requiredSkills = possibleSkills.filter(s => lowerText.includes(s.toLowerCase()));
 
 
+  const lines = textContent.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+  const questionsHeuristic = lines
+    .filter(l => l.endsWith('?') || l.endsWith('*') || l.endsWith(':'))
+    .map(q => q.replace(/[\*\:]$/, '').trim())
+    .filter(q => q.length > 2 && q.length < 150);
+
   return {
     opportunity_id: `opp_${crypto.randomBytes(4).toString('hex')}`,
     title: title.substring(0, 50) || "Extracted Application Form",
@@ -90,6 +108,7 @@ export async function extractOpportunity(targetUrl: string): Promise<Opportunity
       required_skills: requiredSkills,
       eligibility_text: "Extracted from page content using heuristic matching."
     },
+    questions: questionsHeuristic.length > 0 ? questionsHeuristic : ["First Name", "Last Name", "Email", "Resume URL"],
     deadline: null, 
     apply_url: targetUrl,
     data_quality: "incomplete"

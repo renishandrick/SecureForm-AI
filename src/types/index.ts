@@ -50,6 +50,7 @@ export interface Opportunity {
   org: string;
   type: "scholarship" | "internship" | "job";
   requirements: Requirements;
+  questions?: string[];
   deadline: string | null; // ISO-8601 or null
   apply_url: string;
   data_quality: "complete" | "incomplete";
@@ -133,4 +134,15 @@ export interface InfraScannerResult {
     hsts: boolean;
     details: Record<string, string>;
   };
+}
+
+// Stage 10 - Email Opportunities
+export interface EmailOpportunity {
+  id: string;
+  subject: string;
+  from: string;
+  snippet: string;
+  category: "internship" | "scholarship" | "education_form" | "other";
+  confidence: number;
+  date: string;
 }

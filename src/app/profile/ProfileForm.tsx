@@ -184,14 +184,30 @@ export default function ProfileForm({ initialProfile }: { initialProfile: UserPr
           </div>
 
           <div className="glass-card">
-             <h3 style={{ marginBottom: '1rem' }}>Documents</h3>
+             <h3 style={{ marginBottom: '1rem' }}>Documents (PDF)</h3>
              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-               <input className="input-field" value={profile.documents?.resume_url || ""} onChange={e => {
-                 setProfile({...profile, documents: {...profile.documents, resume_url: e.target.value}});
-               }} placeholder="Resume URL" />
-               <input className="input-field" value={profile.documents?.transcript_url || ""} onChange={e => {
-                 setProfile({...profile, documents: {...profile.documents, transcript_url: e.target.value}});
-               }} placeholder="Transcript URL" />
+               <div>
+                 <label style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' }}>
+                   Resume {profile.documents?.resume_url && `(Current: ${profile.documents.resume_url.split('/').pop()})`}
+                 </label>
+                 <input type="file" accept=".pdf" className="input-field" onChange={e => {
+                   const file = e.target.files?.[0];
+                   if (file) {
+                     setProfile({...profile, documents: {...profile.documents, resume_url: file.name}});
+                   }
+                 }} />
+               </div>
+               <div style={{ marginTop: '0.5rem' }}>
+                 <label style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' }}>
+                   Transcript {profile.documents?.transcript_url && `(Current: ${profile.documents.transcript_url.split('/').pop()})`}
+                 </label>
+                 <input type="file" accept=".pdf" className="input-field" onChange={e => {
+                   const file = e.target.files?.[0];
+                   if (file) {
+                     setProfile({...profile, documents: {...profile.documents, transcript_url: file.name}});
+                   }
+                 }} />
+               </div>
              </div>
           </div>
         </div>
