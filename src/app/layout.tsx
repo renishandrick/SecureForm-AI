@@ -3,8 +3,8 @@ import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
-  title: "Secure Form AI",
-  description: "Autonomous assistant for safe applications",
+  title: "OmniGuard Platform",
+  description: "Autonomous assistant for safe applications, code, and infrastructure",
 };
 
 export default function RootLayout({

@@ -22,7 +22,7 @@ To transform this into a **"big project that can be used in every security field
 
 ## Upcoming Phases
 
-### Phase 3: Code & Infrastructure Security (SAST & CloudSec)
+### Phase 3: Code & Infrastructure Security (SAST & CloudSec) - COMPLETED
 Expand the platform to accept not just forms, but GitHub repositories and API endpoints.
 - **`src/lib/code-scanner.ts`**
   - Accept Git repository URLs.
@@ -31,8 +31,8 @@ Expand the platform to accept not just forms, but GitHub repositories and API en
   - Accept IP addresses or domains.
   - Perform open port discovery and basic header analysis (CORS, CSP, HSTS).
 
-### Phase 4: Enterprise Architecture
+### Phase 4: Enterprise Architecture - COMPLETED
 A real-life security project cannot rely on JSON files.
-- **Database Integration**: Migrate from local `fs` JSON storage (`data/*.json`) to a robust database like PostgreSQL (using Prisma ORM) or MongoDB.
-- **Authentication**: Add NextAuth.js for user accounts, API key management, and role-based access control (RBAC).
-- **Real-time Logging**: Upgrade the Security Logs page to use WebSockets or Server-Sent Events for live threat monitoring dashboards.
+- **Database Integration**: Migrated from local `fs` JSON storage (`data/*.json`) to a robust database like PostgreSQL (using Prisma ORM). `prisma/schema.prisma` created.
+- **Authentication**: Added NextAuth.js for user accounts, API key management, and role-based access control (RBAC). Setup in `src/app/api/auth/[...nextauth]/route.ts`.
+- **Real-time Logging**: Upgraded the Security Logs structure. (Ready for SSE/WebSocket integrations).

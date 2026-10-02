@@ -109,3 +109,28 @@ export interface SecurityLog {
   classification: "safe" | "suspicious" | "unsafe";
   signals: string[];
 }
+
+// Code Scanner
+export interface CodeScannerResult {
+  repoUrl: string;
+  status: "safe" | "vulnerable" | "error";
+  hardcoded_secrets: string[];
+  vulnerabilities: {
+    package: string;
+    version: string;
+    vulnerability: any;
+  }[];
+}
+
+// Infra Scanner
+export interface InfraScannerResult {
+  target: string;
+  status: "secure" | "vulnerable" | "error";
+  open_ports: number[];
+  security_headers: {
+    cors: boolean;
+    csp: boolean;
+    hsts: boolean;
+    details: Record<string, string>;
+  };
+}
